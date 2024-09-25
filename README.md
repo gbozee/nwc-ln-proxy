@@ -78,3 +78,9 @@ To make changes to the project:
 - The `startup.sh` script contains example environment variable values. In a production environment, you should set these variables securely and not rely on this script.
 
 For more detailed information about each service, refer to the source code in the respective directories.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file in the project root for the full license text.
+
+The MIT License is a permissive open-source license that allows you to use, modify, and distribute this software for both private and commercial purposes. It comes with no warranties and requires that you include the original copyright notice and license terms in any copy or substantial portion of the software.
