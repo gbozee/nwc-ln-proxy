@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  lnurl_server:
+    build:
+      context: ./lnurl_server
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_BASE_URL=http://nwc_node:3000
+      - LN_ADDRESS_DOMAIN=${LN_ADDRESS_DOMAIN:-localhost:8000}
+      - LN_USERNAME=${LN_USERNAME:-nwc}
+    depends_on:
+      - nwc_node
+
+  nwc_node:
+    build:
+      context: ./nwc_node
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NWC_CONNECTION_STRING=${NWC_CONNECTION_STRING}
+
+networks:
+  default:
+    name: nwc-proxy-network

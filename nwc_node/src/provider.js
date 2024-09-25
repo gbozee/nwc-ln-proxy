@@ -2,8 +2,10 @@ import "websocket-polyfill";
 import { webln } from "@getalby/sdk";
 
 class Provider {
-  constructor(loadNWCUrl) {
-    this.nwc = new webln.NWC({ nostrWalletConnectUrl: loadNWCUrl });
+  constructor(options) {
+    this.nwc = new webln.NWC({
+      nostrWalletConnectUrl: options.connectionString,
+    });
     this.enabled = false;
   }
 

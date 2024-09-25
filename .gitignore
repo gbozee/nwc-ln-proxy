@@ -1,2 +1,4 @@
 node_modules
 startup.sh
+venv
+__pycache__
