@@ -1,4 +1,4 @@
-# NWC Proxy
+# NWC Lightning Address Proxy
 
 This project is a Lightning Network Wallet Connect (NWC) proxy that consists of two main services: an LNURL server and an NWC node. It facilitates Lightning Network transactions and provides an API for interacting with a Lightning Network wallet.
 
