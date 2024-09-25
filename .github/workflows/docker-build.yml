@@ -40,3 +40,17 @@ jobs:
         context: ./nwc_node
         push: true
         tags: ${{ env.REGISTRY }}/${{ github.repository }}/nwc_node:latest
+
+    - name: Make packages public
+      run: |
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        docker run --rm -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} ghcr.io/actions/gh-cli:latest gh api \
+          --method PATCH \
+          -H "Accept: application/vnd.github.v3+json" \
+          /user/packages/container/${{ github.repository_owner }}%2F${{ github.event.repository.name }}%2Flnurl_server/visibility \
+          -f visibility=public
+        docker run --rm -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} ghcr.io/actions/gh-cli:latest gh api \
+          --method PATCH \
+          -H "Accept: application/vnd.github.v3+json" \
+          /user/packages/container/${{ github.repository_owner }}%2F${{ github.event.repository.name }}%2Fnwc_node/visibility \
+          -f visibility=public

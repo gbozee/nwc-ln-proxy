@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  lnurl_server:
+    image: ghcr.io/nwc-ln-proxy/lnurl_server:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_BASE_URL=http://nwc_node:3000
+      - LN_ADDRESS_DOMAIN=${LN_ADDRESS_DOMAIN:-localhost:8000}
+      - LN_USERNAME=${LN_USERNAME:-nwc}
+    depends_on:
+      - nwc_node
+
+  nwc_node:
+    image: ghcr.io/nwc-ln-proxy/nwc_node:latest
+    environment:
+      - NWC_CONNECTION_STRING=${NWC_CONNECTION_STRING}
+
+networks:
+  default:
+    name: nwc-proxy-network
