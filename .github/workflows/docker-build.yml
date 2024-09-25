@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: lnurl_server
-          file: ./Dockerfile
+          file: lnurl_server/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/${{ github.repository }}/lnurl_server:latest
@@ -39,7 +39,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: nwc_node
-          file: ./Dockerfile
+          file: nwc_node/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/${{ github.repository }}/nwc_node:latest
