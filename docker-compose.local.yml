@@ -5,8 +5,7 @@ services:
     build:
       context: ./lnurl_server
       dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
+    
     environment:
       - NODE_BASE_URL=http://nwc_node:3000
       - LN_ADDRESS_DOMAIN=${LN_ADDRESS_DOMAIN:-localhost:8000}
@@ -18,8 +17,7 @@ services:
     build:
       context: ./nwc_node
       dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
+    
     environment:
       - NWC_CONNECTION_STRING=${NWC_CONNECTION_STRING}
 
